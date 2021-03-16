@@ -6,4 +6,3 @@ COPY ./vpn ./vpn
 WORKDIR ./vpn
 RUN openvpn --config vpnbook-fr8-udp53.ovpn
 RUN curl 'https://api.ipify.org?format=json'
-
