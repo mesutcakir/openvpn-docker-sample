@@ -1,8 +1,9 @@
-FROM ubuntu:18.04
-RUN apt-get update
-RUN apt-get install -y --reinstall network-manager network-manager-gnome network-manager-openvpn network-manager-openvpn-gnome
-RUN apt-get install -y curl openvpn zip unzip
+FROM ubuntu:20.04
+RUN apt update -y
+RUN apt upgrade -y
+RUN apt install -y curl openvpn openvpn-systemd-resolved openresolv
 COPY ./vpn ./vpn
 WORKDIR ./vpn
-#CMD openvpn --config vpnbook-fr8-udp53.ovpn --auth-user-pass cred.txt
-#RUN curl 'https://api.ipify.org?format=json'
+RUN openvpn --config vpnbook-fr8-udp53.ovpn
+RUN curl 'https://api.ipify.org?format=json'
+
